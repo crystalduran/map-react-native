@@ -3,7 +3,7 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 interface Props {
-  navigation: StackNavigationProp<any>; // Ajusta este tipo según la definición de tu StackNavigator
+  navigation: StackNavigationProp<any>; 
 }
 
 export default function HomeScreen({ navigation }: Props) {
@@ -13,6 +13,7 @@ export default function HomeScreen({ navigation }: Props) {
   const [longitud, setLongitud] = useState<string>('');
 
   const handleNavigateToMap = () => {
+    // Navegación hacia la pantalla 'Map' con los datos de entrada
     navigation.navigate('Map', {
       nombre: nombre,
       apellido: apellido,

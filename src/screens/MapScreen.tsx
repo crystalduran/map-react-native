@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
 
+// Define la interfaz RouteParams para tipar los parámetros de la ruta
 interface RouteParams {
   nombre: string;
   apellido: string;
@@ -15,13 +16,16 @@ export default function MapScreen() {
   const { nombre, apellido, latitud, longitud } = route.params as RouteParams;
   const [address, setAddress] = useState('');
 
+  // useEffect para realizar acciones una vez que el componente se haya renderizado
   useEffect(() => {
+    // Define una función asincrónica para obtener la dirección utilizando las coordenadas de latitud y longitud
     const fetchAddress = async () => {
         try {
             const response = await fetch(
                 `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=AIzaSyAXazeDkwAPIcn0OpPyujCLrSkpDXh7lD4`
             );
             const data = await response.json();
+            // Verifica si se obtuvieron resultados de la solicitud
             if (data.results.length > 0) {
                 setAddress(data.results[3].formatted_address);
             }
@@ -31,6 +35,7 @@ export default function MapScreen() {
         }
     };
 
+    // Llama a la función fetchAddress cuando el componente se monta
     fetchAddress();
   }, []);
 
