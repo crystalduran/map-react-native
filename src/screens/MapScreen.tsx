@@ -22,7 +22,7 @@ export default function MapScreen() {
     const fetchAddress = async () => {
         try {
             const response = await fetch(
-                `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=AIzaSyAXazeDkwAPIcn0OpPyujCLrSkpDXh7lD4`
+                `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=key`
             );
             const data = await response.json();
             // Verifica si se obtuvieron resultados de la solicitud
